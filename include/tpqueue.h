@@ -1,43 +1,34 @@
 #include <cassert>
- 
+
 template<typename T>
 class TPQueue
 {
-	// Сюда помещается описание структуры "Очередь с приоритетами"
   // Сюда помещается описание структуры "Очередь с приоритетами"
-  // Сюда помещается описание структуры "Очередь с приоритетами"	
     struct ITEM
     {
         T data;
         ITEM* next;
     };
-
 public:
     TPQueue() :head(nullptr), tail(nullptr) {}
     ~TPQueue();
-
     void push(const T&);
     T pop();
-
     void print() const;
-
 private:
     TPQueue::ITEM* create(const T&);
     ITEM* head;
     ITEM* u;
     ITEM* tail;
 };
-
 template<typename T>
 typename TPQueue<T>::ITEM* TPQueue<T>::create(const T& data)
 {
     ITEM* item = new ITEM;
     item->data = data;
     item->next = nullptr;
-
     return item;
 }
-
 template<typename T>
 TPQueue<T>::~TPQueue()
 {
@@ -58,7 +49,9 @@ void TPQueue<T>::push(const T& inf)
 
         if (tail->data.prior == inf.prior && tail->data.ch == inf.ch)
         {
+
             tail->data = inf;
+
         }
         else
         {
@@ -71,6 +64,7 @@ void TPQueue<T>::push(const T& inf)
     }
     else
     {
+
         if (tail->data.prior < inf.prior)
         {
             if (inf.prior > head->data.prior)
@@ -92,6 +86,7 @@ void TPQueue<T>::push(const T& inf)
                         u = create(inf);
                         u->next = head->next;
                         head->next = u;
+
                     }
 
                 else
@@ -104,6 +99,11 @@ void TPQueue<T>::push(const T& inf)
                         head->next = u;
                     }
                 }
+
+
+
+
+
         }
     }
 }
@@ -117,11 +117,10 @@ T TPQueue<T>::pop()
         T data = head->data;
         delete head;
         head = temp;
-
         return data;
     }
-}
 
+}
 template<typename T>
 void TPQueue<T>::print() const	
 {
@@ -134,7 +133,7 @@ void TPQueue<T>::print() const
                 temp = temp->next;	       
             }
         }
-        std::cout << std::endl;	
+        std::cout << std::endl;	    std::cout << std::endl;
     }
 }
 
@@ -143,5 +142,7 @@ struct SYM
 	char ch;
 	int  prior;
 }; 
-	SYM* next;
+    char ch;
+    int prior;
+    SYM* next;
 };
