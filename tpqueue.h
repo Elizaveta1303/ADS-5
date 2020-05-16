@@ -1,8 +1,9 @@
+#include <cassert>
+
 template<typename T>
 class TPQueue
 {
   // Сюда помещается описание структуры "Очередь с приоритетами"
-  // Сюда помещается описание структуры "Очередь с приоритетами"	
     struct ITEM
     {
         T data;
@@ -45,9 +46,12 @@ void TPQueue<T>::push(const T& inf)
     }
     else if (tail->data.prior >= inf.prior)
     {
+
         if (tail->data.prior == inf.prior && tail->data.ch == inf.ch)
         {
+
             tail->data = inf;
+
         }
         else
         {
@@ -60,6 +64,7 @@ void TPQueue<T>::push(const T& inf)
     }
     else
     {
+
         if (tail->data.prior < inf.prior)
         {
             if (inf.prior > head->data.prior)
@@ -70,7 +75,9 @@ void TPQueue<T>::push(const T& inf)
                 head = tmp;
             }
             else
+
                 if (inf.prior == head->data.prior)
+
                     if (inf.ch == head->data.ch)
                         head->data = inf;
                     else
@@ -79,7 +86,9 @@ void TPQueue<T>::push(const T& inf)
                         u = create(inf);
                         u->next = head->next;
                         head->next = u;
+
                     }
+
                 else
                 {
                     if (inf.prior < head->data.prior)
@@ -90,9 +99,15 @@ void TPQueue<T>::push(const T& inf)
                         head->next = u;
                     }
                 }
+
+
+
+
+
         }
     }
 }
+
 template<typename T>
 T TPQueue<T>::pop()
 {
@@ -104,6 +119,7 @@ T TPQueue<T>::pop()
         head = temp;
         return data;
     }
+
 }
 template<typename T>
 void TPQueue<T>::print() const	
@@ -117,14 +133,16 @@ void TPQueue<T>::print() const
                 temp = temp->next;	       
             }
         }
-        std::cout << std::endl;	
+        std::cout << std::endl;	    std::cout << std::endl;
     }
 }
+
 struct SYM
 {
 	char ch;
 	int  prior;
 }; 
-
-	SYM* next;
+    char ch;
+    int prior;
+    SYM* next;
 };
